@@ -54,6 +54,8 @@ function updateLight() {
 // frame cycle
 var fps = 30;
 setInterval(function() {
-
-  esp.neopixelWrite(pin, pixel);
+  var oldLocation;
+  updateLight();
+  showPixel(light.location, oldLocation);
+  oldLocation = light.location;
 },1000/fps);
