@@ -32,15 +32,16 @@ var light = {
   location: 0,
   accel: 0,
   veloc: 0,
-  // mass can't be 0
+  // mass can't be 0!
   mass: 1
 };
 function updateLight() {
+  // location = velocity+(gravitiy/mass)
   // grav[x,y,z]
   var grav = mpu.getGravity();
   // get ms^2 from g and factor in mass
   gravity = (grav[1] * 9.81) / mass;
-
+  // apply force
   light.accel = gravity;
   light.veloc = light.veloc + light.accel;
   light.location = light.location + light.veloc;
