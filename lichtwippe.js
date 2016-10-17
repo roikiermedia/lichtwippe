@@ -49,6 +49,16 @@ function updateLight() {
   // round location to whole pixel
   light.location = Math.round(light.location);
 }
+function checkEdges() {
+  if (light.location < 0) {
+    light.location = 0;
+    light.veloc = light.veloc * -1;
+  }
+  if (light.location > striplength-1) {
+    light.location = striplength-1;
+    light.veloc = light.veloc * -1;
+  }
+}
 
 
 // frame cycle
@@ -57,5 +67,6 @@ setInterval(function() {
   var oldLocation;
   updateLight();
   showPixel(light.location, oldLocation);
+  checkEdges(); // may have to be moved before showPixel()
   oldLocation = light.location;
 },1000/fps);
