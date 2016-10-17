@@ -14,12 +14,6 @@ var pixel = [
 ];
 
 
-// helpers
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
 // physics simulation
 var light = {
   location: 0,
@@ -41,6 +35,7 @@ function updateLight() {
   // round location to whole pixel
   light.location = Math.round(light.location);
 }
+
 
 // frame cycle
 var fps = 30;
