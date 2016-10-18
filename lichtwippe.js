@@ -7,6 +7,7 @@ var pin = new Pin(NodeMCU.D6);
 pinMode(pin, "output");
 var fps = 30;
 var striplength = 120;
+var ledDistance = 1.6; // distance between centers of leds in cm
 var pixel = [
 //G,R,B
   0,0,0, // LED 0
@@ -45,6 +46,7 @@ function updateLight() {
   // apply force
   light.accel = gravity;
   light.veloc = light.veloc + light.accel;
+  light.veloc = light.veloc / ledDistance;
   light.location = light.location + light.veloc;
   light.accel = 0;
   // round location to whole pixel
