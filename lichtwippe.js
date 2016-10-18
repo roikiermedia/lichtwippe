@@ -54,11 +54,11 @@ function updateLight() {
 function checkEdges() {
   if (light.location < 0) {
     light.location = 0;
-    light.veloc = light.veloc * -1;
+    light.veloc = light.veloc * -0.5;
   }
   if (light.location > striplength-1) {
     light.location = striplength-1;
-    light.veloc = light.veloc * -1;
+    light.veloc = light.veloc * -0.5;
   }
 }
 
@@ -67,7 +67,7 @@ function checkEdges() {
 var oldLocation = 0;
 setInterval(function() {
   updateLight();
+  checkEdges();
   showPixel(light.location, oldLocation);
-  checkEdges(); // may have to be moved before showPixel()
   oldLocation = light.location;
 },1000/fps);
