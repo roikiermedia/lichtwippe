@@ -30,7 +30,7 @@ function showPixel(location, lastLocation) {
 
 // physics simulation
 var light = {
-  location: Math.round(striplength-1),
+  location: Math.round((striplength-1)/2),
   accel: 0,
   veloc: 0,
   // mass can't be 0!
