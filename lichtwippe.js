@@ -37,12 +37,12 @@ var light = {
 };
 function updateLight() {
   // TODO: implement friction & mapping leds to cm (maybe veloc/1.6) @themoment in m, should be cm (so, veloc/1.6/100), what about time? (veloc/1.6/100/fps)
-  
+
   // location = velocity+(gravitiy/mass)
   // grav[x,y,z]
   var grav = mpu.getGravity();
   // get ms^2 from g and factor in mass
-  gravity = (grav[1] * 9.81) / mass;
+  gravity = (grav[1] * 9.81) / light.mass;
   // apply force
   light.accel = gravity;
   light.veloc = light.veloc + light.accel;
