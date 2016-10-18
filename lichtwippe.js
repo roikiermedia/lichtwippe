@@ -13,11 +13,9 @@ var pixel = [
 ];
 function showPixel(location, lastLocation) {
   // turn off last pixel
-  if (lastlocation !== undefined) {
-    pixel[lastLocation*3] = 0;
-    pixel[lastLocation*3+1] = 0;
-    pixel[lastLocation*3+2] = 0;
-  }
+  pixel[lastLocation*3] = 0;
+  pixel[lastLocation*3+1] = 0;
+  pixel[lastLocation*3+2] = 0;
   // turn on new pixel
   pixel[location*3] = 255;
   pixel[location*3+1] = 255;
@@ -65,8 +63,8 @@ function checkEdges() {
 
 // frame cycle
 var fps = 30;
+var oldLocation = 0;
 setInterval(function() {
-  var oldLocation;
   updateLight();
   showPixel(light.location, oldLocation);
   checkEdges(); // may have to be moved before showPixel()
