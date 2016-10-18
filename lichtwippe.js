@@ -43,7 +43,7 @@ function updateLight() {
   // grav[x,y,z]
   var grav = mpu.getGravity();
   // get ms^2 from g and factor in mass
-  gravity = (grav[1] * 9.81) / light.mass;
+  gravity = (grav[2] * 9.81) / light.mass;
   // apply force
   light.accel = gravity;
   light.veloc = light.veloc + light.accel;
