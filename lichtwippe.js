@@ -5,6 +5,7 @@ var mpu = require("MPU6050").connect(I2C1);
 // led-strip
 var pin = new Pin(NodeMCU.D6);
 pinMode(pin, "output");
+var fps = 30;
 var striplength = 120;
 var pixel = [
 //G,R,B
@@ -62,7 +63,6 @@ function checkEdges() {
 
 
 // frame cycle
-var fps = 30;
 var oldLocation = 0;
 setInterval(function() {
   updateLight();
