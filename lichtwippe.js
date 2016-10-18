@@ -6,6 +6,7 @@ var mpu = require("MPU6050").connect(I2C1);
 var pin = new Pin(NodeMCU.D6);
 pinMode(pin, "output");
 var fps = 30;
+var maxBrightness = 100; // int 0-255
 var striplength = 120;
 var ledDistance = 1.6; // distance between centers of leds in cm
 var pixel = [
@@ -19,9 +20,9 @@ function showPixel(location, lastLocation) {
   pixel[lastLocation*3+1] = 0;
   pixel[lastLocation*3+2] = 0;
   // turn on new pixel
-  pixel[location*3] = 255;
-  pixel[location*3+1] = 255;
-  pixel[location*3+2] = 255;
+  pixel[location*3] = maxBrightness;
+  pixel[location*3+1] = maxBrightness;
+  pixel[location*3+2] = maxBrightness;
   // write pixel data to strip
   esp.neopixelWrite(pin, pixel);
 }
