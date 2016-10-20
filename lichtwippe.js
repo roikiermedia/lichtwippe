@@ -1,4 +1,5 @@
-var esp = require("ESP8266");
+E.on('init', function() {
+  var esp = require("ESP8266");
 I2C1.setup({scl:NodeMCU.D3,sda:NodeMCU.D4});
 var mpu = require("MPU6050").connect(I2C1);
 
@@ -6,7 +7,7 @@ var mpu = require("MPU6050").connect(I2C1);
 var pin = new Pin(NodeMCU.D6);
 pinMode(pin, "output");
 var fps = 60;
-var maxBrightness = 100; // int 0-255
+var maxBrightness = 255; // int 0-255
 var striplength = 120;
 var ledDistance = 1.6; // distance between centers of leds in cm
 var pixel = [
@@ -37,6 +38,8 @@ var light = {
   mass: 10
 };
 function updateLight() {
+  // TODO: implement friction & mapping leds to cm (maybe veloc/1.6) @themoment in m, should be cm (so, veloc/1.6/100), what about time? (veloc/1.6/100/fps)
+
   // location = velocity+(gravitiy/mass)
   // grav[x,y,z]
   var grav = mpu.getGravity();
@@ -71,3 +74,6 @@ setInterval(function() {
   showPixel(light.location, oldLocation);
   oldLocation = light.location;
 },1000/fps);
+
+});
+
